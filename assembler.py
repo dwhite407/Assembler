@@ -1,3 +1,4 @@
+# OPTAB dictionary containing the opcode and format of each SIC/XE instruction
 OPTAB =  {
     "ADD":{
         "format": "3/4",
@@ -48,22 +49,22 @@ OPTAB =  {
 file = open("input/basic.txt", "r")
 
 for line in file:
-    split_line = line.split(".")
-    instruction = split_line[0].rstrip("\n")
+    split_line = line.split(".") # Remove comments from the line
+    instruction = split_line[0].rstrip("\n") # Remove newline character from the instruction
 
-    parts = instruction.split()
-    if len(parts) == 2:
+    parts = instruction.split() # Split the instruction into parts (label, opcode, operand)
+    if len(parts) == 2: # If the instruction has no label
         print("Opcode: " + parts[0])
         print("Operand: " + parts[1])
-        if parts[0] in OPTAB:
+        if parts[0] in OPTAB: # If the opcode is in the OPTAB, print its format
             print("Format: " + OPTAB[parts[0]]["format"] + "\n")
-        elif parts[0] not in OPTAB:
+        elif parts[0] not in OPTAB: # If the opcode is not in the OPTAB, print "N/A" for format
             print("Format: " + "N/A" + "\n")
-    elif len(parts) == 3:
+    elif len(parts) == 3: # If the instruction has a label
         print("label: " + parts[0])
         print("Opcode: " + parts[1])
         print("Operand: " + parts[2])
-        if parts[1] in OPTAB:
+        if parts[1] in OPTAB: # If the opcode is in the OPTAB, print its format
             print("Format: " + OPTAB[parts[1]]["format"] + "\n")
-        elif parts[1] not in OPTAB:
+        elif parts[1] not in OPTAB: # If the opcode is not in the OPTAB, print "N/A" for format
             print("Format: " + "N/A" + "\n")
