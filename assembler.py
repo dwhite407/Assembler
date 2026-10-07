@@ -48,9 +48,6 @@ OPTAB =  {
 
 SYMTAB = {} # Initialize the symbol table as an empty dictionary
 
-def hex_to_binary(hex_value): # Convert a hexadecimal value to binary
-    return format(int(hex_value, 16), "08b")
-
 locctr = 0 # Initialize the location counter to 0
 
 file = open("input/basic.txt", "r")
@@ -123,6 +120,4 @@ for line in intermediate:
         label = parts[1]
         opcode = parts[2]
         operand = parts[3]    
-
-    
 
