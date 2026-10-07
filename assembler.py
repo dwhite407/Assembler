@@ -63,6 +63,7 @@ else:
     locctr = 0
     file.seek(0) # Reset the file pointer to the beginning of the file
 
+# PASS 1
 for line in file:
     split_line = line.split(".") # Remove comments from the line
     instruction = split_line[0].rstrip("\n") # Remove newline character from the instruction
