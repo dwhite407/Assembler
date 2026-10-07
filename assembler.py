@@ -100,3 +100,24 @@ for line in file:
         else:
             print("Format: " + "N/A" + "\n")
 print("SYMTAB: " + str(SYMTAB)) # Print the symbol table
+file.close() # Close the input file
+intermediate.close() # Close the intermediate file
+
+# PASS 2
+intermediate = open("output/intermediate.txt", "r") # Open the intermediate file for reading
+intermediate.readline() # Skip the header line
+
+for line in intermediate:
+    parts = line.split() # Split the line into parts (locctr, label, opcode, operand)
+
+    if len(parts) == 3: # If the line has 3 parts, it means there is no label
+        locctr = parts[0]
+        label = ""
+        opcode = parts[1]
+        operand = parts[2]
+    elif len(parts) == 4: # If the line has 4 parts, it means there is a label
+        locctr = parts[0]
+        label = parts[1]
+        opcode = parts[2]
+        operand = parts[3]    
+
