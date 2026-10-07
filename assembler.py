@@ -124,5 +124,8 @@ for line in intermediate:
     if opcode in OPTAB: # If the opcode is in the OPTAB, print its binary representation
         opcode_binary = format(int(OPTAB[opcode]["Opcode"], 16), "08b")
         print(f"Opcode: {opcode}, Hex: {OPTAB[opcode]['Opcode']}, Binary: {opcode_binary}")
-    else:
-        print("Opcode not found in OPTAB") # If the opcode is not in the OPTAB, print an error message
+    elif SYMTAB: # If the opcode is not in the OPTAB, check if it is in the SYMTAB
+        if label in SYMTAB:
+            print(f"Operand: {label}, Decimal: {SYMTAB[label]}, Address: {format(SYMTAB[label], '04X')}")
+        else:
+            print(f"Operand: {operand}, Address: N/A")
